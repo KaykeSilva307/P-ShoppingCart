@@ -6,8 +6,12 @@ import { router } from './App.tsx'
 import { RouterProvider } from 'react-router-dom'
 // Cria de fato o elemento responsavel pelas rotas
 
+import CartProvider from './Contexts/cartContext.tsx'
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </StrictMode>,
 )
