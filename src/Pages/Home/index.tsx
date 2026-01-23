@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react"
 import { api } from "../../Services/api" // api configurada, puxando os dados
 
 import { CartContext } from "../../Contexts/cartContext";
+import { Link } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
@@ -47,13 +48,15 @@ export function Home() {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5">
         {products.map((product) => (
           <section key={product.id} className="w-full">
-            <img
-              className="w-full rounded-lg max-h-72 mb-2"
-              src={product.cover}
-              alt={product.title}
-            />
-            <p className="font-medium mt-1 mb-2">{product.title}</p>
+            <Link to={`/products/${product.id}`} className="cursor-pointer">
+              <img
+                className="w-full rounded-lg max-h-72 mb-2"
+                src={product.cover}
+                alt={product.title}
+              />
+              <p className="font-medium mt-1 mb-2">{product.title}</p>
 
+            </Link>
             <div className="flex gap-3 items-center">
               <strong className="text-zinc-700/90">{product.price.toLocaleString('pt-br', {
                 style: 'currency',
